@@ -90,11 +90,12 @@
                             <span>Manajemen</span></a>
                         <div class="collapse" id="collapseMenuItemUI">
                             <ul class="submenu">
-                                <li><a class="submenu-link active" href="./accordion.html">Kategori</a></li>
-                                <li><a class="submenu-link" href="./accordion.html">Produk</a></li>
-                                <li><a class="submenu-link" href="./accordion.html">Pelanggan</a></li>
-                                <li><a class="submenu-link" href="./accordion.html">Supplier</a></li>
-                                <li><a class="submenu-link" href="./accordion.html">Karyawan</a></li>
+                                <li><a class="submenu-link {{ Request::is('admin.dashboard') ? '
+                                    active' : null }}" href="{{ route('admin.category') }}">Kategori</a></li>
+                                <li><a class="submenu-link">Produk</a></li>
+                                <li><a class="submenu-link">Pelanggan</a></li>
+                                <li><a class="submenu-link">Supplier</a></li>
+                                <li><a class="submenu-link">Karyawan</a></li>
                             </ul>
                         </div>
                     </li>

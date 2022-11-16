@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,11 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->prefix('/admin')->group(function(){
+    //dashboard
     Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
-
-    Route::post('logout',LogoutController::class)->name('logout');
+    //category
+    Route::get('/category', [CategoryController::class,'index'])->name('admin.category');
+    Route::delete('/category/delete/{id}', [CategoryController::class,'destroy']);
+    //logout
+    Route::post('logout',LogoutController::class)->name('admin.logout');
 });
