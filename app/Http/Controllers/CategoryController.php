@@ -17,4 +17,8 @@ class CategoryController extends Controller
         Category::where('id',$id)->delete();
         return redirect()->back()->with('success','data berhasil dihapus');
     }
+    public function create(Request $request)
+    {
+        dd($request->all());
+    }
 }

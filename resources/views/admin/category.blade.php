@@ -5,7 +5,8 @@
             <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i>
                     Kategori</a></li>
         </ol>
-        <button class="btn btn-primary btn btn-sm m-2">Tambah</button>
+        <button type="button" data-bs-toggle="modal" data-bs-target="#tambah"
+            class="btn btn-primary btn btn-sm m-2">Tambah</button>
     </nav> <!-- / Breadcrumbs-->
 
     <!-- Bottom Row Widgets-->
@@ -55,6 +56,34 @@
             </div>
         </div>
         <!-- / Projects Widget-->
+        <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="tambah" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('category.create') }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label class="form-label form-label-light" for="kategori">Nama Kategori</label>
+                                <input type="text" name="kategori" class="form-control form-control-light" id="kategori"
+                                    placeholder="name kategori">
+                                @error('kategori')
+                                <label class="form-label form-label-light">{{ $message }}</label>
+                                @enderror
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="summit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     </div>
 </x-app-layout>

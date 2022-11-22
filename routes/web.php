@@ -31,6 +31,7 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
     //category
     Route::get('/category', [CategoryController::class,'index'])->name('admin.category');
+    Route::post('/category',[CategoryController::class,'create'])->name('category.create');
     Route::delete('/category/delete/{id}', [CategoryController::class,'destroy']);
     //logout
     Route::post('logout',LogoutController::class)->name('admin.logout');
