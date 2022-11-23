@@ -19,7 +19,8 @@ class LoginController extends Controller
             'password' => ['required'], // validasi bisa pakai request jika ingin atau jika ada user yang bisa menmbabahkan user lain
         ]);
         if (Auth::attempt($attributes,$request->remember)) {
-            return redirect()->intended('/')->with('success', 'anda sudah login');
+            $request->session()->regenerate();
+            return redirect()->intended('/admin/dashboard')->with('success', 'anda sudah login');
 
         }
         throw ValidationException::withMessages([
