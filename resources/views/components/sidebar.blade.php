@@ -92,8 +92,9 @@
                             <ul class="submenu">
                                 <li><a class="submenu-link {{ Request::is('admin.dashboard') ? '
                                     active' : null }}" href="{{ route('admin.category') }}">Kategori</a></li>
-                                <li><a class="submenu-link">Produk</a></li>
-                                <li><a class="submenu-link">Pelanggan</a></li>
+                                <li><a class="submenu-link {{ Request::is('admin.dashboard') ? '
+                                    active' : null }}" href="{{ route('admin.product') }}">Produk</a></li>
+                                <li><a class=" submenu-link">Pelanggan</a></li>
                                 <li><a class="submenu-link">Supplier</a></li>
                                 <li><a class="submenu-link">Karyawan</a></li>
                             </ul>

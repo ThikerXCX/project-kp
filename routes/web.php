@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,8 @@ Route::middleware('guest')->group(function(){
 });
 
 Route::middleware('auth')->prefix('/admin')->group(function(){
+    //logout
+    Route::post('logout',LogoutController::class)->name('admin.logout');
     //dashboard
     Route::get('/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
     //category
@@ -35,6 +38,7 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::put('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
     Route::get('/category/{category:slug}',[CategoryController::class,'show']);
     Route::delete('/category/delete/{id}', [CategoryController::class,'destroy']);
-    //logout
-    Route::post('logout',LogoutController::class)->name('admin.logout');
+    // Product
+    Route::get('/product',[ProductController::class,'index'])->name('admin.product');
+
 });

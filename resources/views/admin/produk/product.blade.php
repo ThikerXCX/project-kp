@@ -1,9 +1,9 @@
-<x-app-layout title="Produk">
+<x-app-layout title="Kategori">
     <!-- Breadcrumbs-->
     <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i>
-                    Produk</a></li>
+                    Kategori</a></li>
         </ol>
         <button type="button" data-bs-toggle="modal" data-bs-target="#tambah"
             class="btn btn-primary btn btn-sm m-2">Tambah</button>
