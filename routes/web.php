@@ -40,5 +40,6 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::delete('/category/delete/{id}', [CategoryController::class,'destroy']);
     // Product
     Route::get('/product',[ProductController::class,'index'])->name('admin.product');
+    Route::post('/product',[ProductController::class,'store'])->name('product.create');
 
 });
