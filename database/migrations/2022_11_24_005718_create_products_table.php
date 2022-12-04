@@ -16,9 +16,11 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('brand_id')->constrained();
             $table->string('name',50);
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->longText('spesifikasi');
+            $table->integer('stock');
             $table->string('img1',50)->nullable();
             $table->string('img2',50)->nullable();
             $table->string('img3',50)->nullable();

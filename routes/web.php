@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -38,6 +39,8 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::put('/category/{id}/update',[CategoryController::class,'update'])->name('category.update');
     Route::get('/category/{category:slug}',[CategoryController::class,'show']);
     Route::delete('/category/delete/{id}', [CategoryController::class,'destroy']);
+    // brand
+    Route::get('/brand', [BrandController::class,'index'])->name('admin.brand');
     // Product
     Route::get('/product',[ProductController::class,'index'])->name('admin.product');
     Route::post('/product',[ProductController::class,'store'])->name('product.create');

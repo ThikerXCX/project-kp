@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\brand;
 use App\Models\category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,8 +17,10 @@ class ProductFactory extends Factory
     {
         return [
             'category_id' => category::factory()->create(),
+            'brand_id' => brand::factory()->create(),
             'name' => 'Asus Rog Mantap Jiwa',
             'price' => 1000000,
+            'stock' => 3,
             'spesifikasi' => 
             '👉 ACER NITRO AN515-51
             Desain laptop kece banget kokoh dan berforma tinggi cocok banget nih Untuk Editing, rendering dan pastinya Gaming 😇
