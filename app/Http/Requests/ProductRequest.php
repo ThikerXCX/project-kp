@@ -25,14 +25,15 @@ class ProductRequest extends FormRequest
     {
         return [
             'category_id' => ['required'],
+            'brand_id' => ['required'],
             'name' => ['required'],
             'price' => ['required','numeric'],
-            'stock' => ['requires'],
+            'stock' => ['required'],
             'spesifikasi' => ['required'],
-            'img1' => 'file',
-            'img2' => 'file',
-            'img3' => 'file',
-            'img4' => 'file',
+            'img1' => 'nullable|image|mimes:jpeg,jpg,png',
+            'img2' => 'nullable|image|mimes:jpeg,jpg,png',
+            'img3' => 'nullable|image|mimes:jpeg,jpg,png',
+            'img4' => 'nullable|image|mimes:jpeg,jpg,png',
         ];
     }
 }

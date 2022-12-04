@@ -19,6 +19,7 @@ class ProductFactory extends Factory
             'category_id' => category::factory()->create(),
             'brand_id' => brand::factory()->create(),
             'name' => 'Asus Rog Mantap Jiwa',
+            'slug' => 'asus-rog-mantap-jiwa',
             'price' => 1000000,
             'stock' => 3,
             'spesifikasi' => 

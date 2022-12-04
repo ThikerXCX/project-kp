@@ -96,7 +96,8 @@
                                     active' : null }}" href="{{ route('admin.brand') }}">Brand</a></li>
                                 <li><a class="submenu-link {{ Request::is('admin.dashboard') ? '
                                     active' : null }}" href="{{ route('admin.product') }}">Produk</a></li>
-                                <li><a class=" submenu-link">Pelanggan</a></li>
+                                <li><a class=" submenu-link {{ Request::is('admin.user') ? '
+                                    active' : null }}" href="{{ route('admin.user') }}">Pelanggan</a></li>
                                 <li><a class="submenu-link">Supplier</a></li>
                                 <li><a class="submenu-link">Karyawan</a></li>
                             </ul>

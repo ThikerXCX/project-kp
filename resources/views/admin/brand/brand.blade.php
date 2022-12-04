@@ -1,9 +1,9 @@
-<x-app-layout title="Produk">
+<x-app-layout title="Brand">
     <!-- Breadcrumbs-->
     <nav class="mb-4 pb-2 border-bottom" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./index.html"><i class="ri-home-line align-bottom me-1"></i>
-                    Produk</a></li>
+                    Brand</a></li>
         </ol>
         <button type="button" data-bs-toggle="modal" data-bs-target="#tambah"
             class="btn btn-primary btn btn-sm m-2">Tambah</button>
@@ -38,7 +38,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama</th>
+                                    <th>Nama Brand</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -50,8 +50,7 @@
                                     <td>
                                         <button id="{{ $i->slug }}" onclick="show(this.id)"
                                             class="btn btn-warning btn btn-sm">Edit</button>
-                                        <form action="/admin/category/delete/{{ $i->id }}" method="post"
-                                            class="d-inline">
+                                        <form action="/admin/brand/delete/{{ $i->id }}" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -70,14 +69,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Brand</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('category.create') }}" method="POST">
+                        <form action="{{ route('brand.create') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="form-label form-label-light" for="name">Nama Kategori</label>
+                                <label class="form-label form-label-light" for="name">Nama Brand</label>
                                 <input type="text" name="name" class="form-control form-control-light" id="name"
                                     placeholder="name">
                                 @error('name')
@@ -97,7 +96,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Brand</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -119,9 +118,8 @@
             $.ajax({
                 method : 'get',
                 type : "json",
-                url : '/admin/category/' + id,
+                url : '/admin/brand/' + id,
             }).done(function(data){
-                // console.log(data);
                 $('#load-update').html(data);
                 $('#edit').modal('show');
             })

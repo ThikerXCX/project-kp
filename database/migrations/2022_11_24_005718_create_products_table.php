@@ -15,9 +15,10 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('brand_id')->constrained();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('brand_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name',50);
+            $table->string('slug',50);
             $table->bigInteger('price');
             $table->longText('spesifikasi');
             $table->integer('stock');
