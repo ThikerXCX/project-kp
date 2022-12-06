@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,5 +57,8 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::get('/product/spek/{product:slug}',[ProductController::class,'spek']);
     Route::get('/product/{product:slug}',[ProductController::class,'show']);
     Route::put('/product/{id}/update',[ProductController::class,'update'])->name('product.update');
+
+    //user
+    Route::get('/user',[UserController::class,'index'])->name('admin.user');
 
 });
