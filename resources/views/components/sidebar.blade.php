@@ -84,6 +84,7 @@
                         </a>
                     </li>
                     <!-- / Dashboard Menu Section-->
+                    @hasanyrole($roles)
                     <li class="menu-item"><a class="d-flex align-items-center collapsed  menu-link" href="#"
                             data-bs-toggle="collapse" data-bs-target="#collapseMenuItemUI" aria-expanded="true"
                             aria-controls="collapseMenuItemUI"><i class="ri-shape-fill me-3"></i>
@@ -103,12 +104,15 @@
                             </ul>
                         </div>
                     </li>
+                    @endhasanyrole()
+                    @can('laporan')
                     <li class="menu-section">Laporan</li>
                     <li class="menu-item">
                         <a class="d-flex align-items-center menu-link" href="3">
                             <i class="ri-file-fill me-3"></i><span>Laporan</span>
                         </a>
                     </li>
+                    @endcan
                     <li class="menu-section">Manajemen Toko</li>
                     <li class="menu-item">
                         <a class="d-flex align-items-center menu-link" href="3">

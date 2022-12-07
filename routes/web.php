@@ -29,7 +29,7 @@ Route::middleware('guest')->group(function(){
     Route::post('/admin', [LoginController::class,'store']);
 });
 
-Route::middleware('auth')->prefix('/admin')->group(function(){
+Route::middleware(['has_role','auth'])->prefix('/admin')->group(function(){
     //logout
     Route::post('logout',LogoutController::class)->name('admin.logout');
 
@@ -60,5 +60,9 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
 
     //user
     Route::get('/user',[UserController::class,'index'])->name('admin.user');
+    Route::post('/user',[UserController::class,'store'])->name('user.create');
+    Route::get('/user/{user:id}',[UserController::class,'show']);
+    Route::put('/user/{id}/update',[UserController::class,'update'])->name('user.update');
+    Route::delete('/user/delete/{id}', [UserController::class,'destroy']);
 
 });

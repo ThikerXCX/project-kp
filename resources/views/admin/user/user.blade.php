@@ -50,12 +50,13 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $i->name }}</td>
-                                    <td>{{ $i->created_at->format('jS F Y') }}</td>
+                                    <td>{{ $i->created_at->isoFormat('D/M/Y') }}</td>
                                     <td>{{ implode(', ',$i->getRoleNames()->toArray()) }}</td>
                                     <td>
                                         <button id="{{ $i->id }}" onclick="show(this.id)"
                                             class="btn btn-warning btn btn-sm">Edit</button>
-                                        <form action="/admin/brand/delete/{{ $i->id }}" method="post" class="d-inline">
+                                        <form action="/admin/user/delete/{{ $i->id }}"
+                                            onclick="confirm('yakin Mau Hapus Data')" method="post" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -78,15 +79,39 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('brand.create') }}" method="POST">
+                        <form action="{{ route('user.create') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="form-label form-label-light" for="name">Nama Brand</label>
+                                <label class="form-label form-label-light" for="name">Nama User</label>
                                 <input type="text" name="name" class="form-control form-control-light" id="name"
                                     placeholder="name">
                                 @error('name')
                                 <label class="form-label form-label-light">{{ $message }}</label>
                                 @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-light" for="name">Email User</label>
+                                <input type="email" name="email" class="form-control form-control-light" id="email"
+                                    placeholder="email@gmail.com">
+                                @error('email')
+                                <label class="form-label form-label-light">{{ $message }}</label>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-light" for="name">Password User</label>
+                                <input type="password" name="password" class="form-control form-control-light"
+                                    id="password" placeholder="password">
+                                @error('password')
+                                <label class="form-label form-label-light">{{ $message }}</label>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label form-label-light" for="name">Role User</label>
+                                <select name="role" id="role" class="form-control form-control-light">
+                                    @foreach ($role as $rol)
+                                    <option value="{{ $rol->name }}">{{ $rol->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -123,7 +148,7 @@
             $.ajax({
                 method : 'get',
                 type : "json",
-                url : '/admin/brand/' + id,
+                url : '/admin/user/' + id,
             }).done(function(data){
                 $('#load-update').html(data);
                 $('#edit').modal('show');

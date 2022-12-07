@@ -29,5 +29,9 @@ class RoleAndPermissionSeeder extends Seeder
 
         Role::create(['name' =>'admin'])->givePermissionTo(['brand','category','product','user']);
         Role::create(['name' =>'super admin'])->givePermissionTo(Permission::all());
+
+        $role = Role::where('name', 'super admin')->first();
+        $user = User::where('email','admin@gmail.com')->first();
+        $user->assignRole($role);
     }
 }

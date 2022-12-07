@@ -14,11 +14,11 @@ class LoginController extends Controller
     }
     public function store(Request $request)
     {
-        $attributes = $request->validate([
+        $attr = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'], // validasi bisa pakai request jika ingin atau jika ada user yang bisa menmbabahkan user lain
         ]);
-        if (Auth::attempt($attributes,$request->remember)) {
+        if (Auth::attempt($attr,$request->remember)) {
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard')->with('success', 'anda sudah login');
 

@@ -50,7 +50,8 @@
                                     <td>
                                         <button id="{{ $i->slug }}" onclick="show(this.id)"
                                             class="btn btn-warning btn btn-sm">Edit</button>
-                                        <form action="/admin/brand/delete/{{ $i->id }}" method="post" class="d-inline">
+                                        <form action="/admin/brand/delete/{{ $i->id }}" method="post"
+                                            onclick="confirm('yakin Mau Hapus Data')" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
