@@ -17,7 +17,7 @@
                         <div class="d-flex align-items-center justify-content-center">
                             <img class="img-rounded" src="{{ asset('assets/images/favicon/EC.svg') }}"
                                 style="width: 50px">
-                            <span class="fw-bold fs-3 text-white">{{ config('name') }}</span>
+                            <span class="fw-bold fs-3 text-white">EC COMPUTER</span>
                         </div>
                     </a>
                 </div>

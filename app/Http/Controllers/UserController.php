@@ -34,7 +34,6 @@ class UserController extends Controller
     }
     public function update($id, Request $request)
     {
-        dd($request->all());
         $request->validate([
             'name' => ['required', 'string', 'min:3'],
             'email' => ['required', 'email'],
@@ -44,12 +43,16 @@ class UserController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
             ]);
+            $user = User::find($id);
+            $user->syncRoles($request->role);
         }else{
             User::where('id',$id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
             ]);
+            $user = User::find($id);
+            $user->syncRoles($request->role);
         }
         return redirect()->back()->with('success','data berhasil diUpdate');
     }
